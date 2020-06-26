@@ -1,6 +1,6 @@
 *
-!*.d.ts
-!index.js
 !README.md
 !LICENSE
 !package.json
+!/*.d.ts
+!/*.js
