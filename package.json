@@ -1,7 +1,7 @@
 {
   "name": "@enbock/application-router",
   "description": "A simple application router for Progressive Web Applications.",
-  "version": "0.1.0-dev.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/enbock/Application-Router/",
   "license": "MIT",
   "author": "Endre Bock <dev@itbock.de>",
@@ -11,6 +11,9 @@
   "scripts": {
     "build": "npx tsc --build tsconfig.json -v",
     "test": "jest --coverage --verbose"
+  },
+  "dependencies": {
+    "@enbock/state-value-observer": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -32,7 +35,7 @@
     "transform": {
       ".ts": "ts-jest"
     },
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testRegex": "\\.test\\.ts$",
     "testURL": "http://localhost",
     "moduleFileExtensions": [

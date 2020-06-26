@@ -1,3 +1,0 @@
-it('Collect library', () => {
-
-});
