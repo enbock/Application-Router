@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "outDir": ".",
+    "declaration": true,
+    "module": "CommonJS",
+    "target": "ES5",
+    "strict": true,
+    "listEmittedFiles": true,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
+    "moduleResolution": "Node"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.*"
+  ]
+}

@@ -1,0 +1,6 @@
+/coverage/
+/yarn-error.log
+/node_modules/
+*.d.ts
+*.js
+*.tgz
