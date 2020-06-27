@@ -161,5 +161,5 @@ yarn build
 ```
 
 [ECMAScript® 2020]:https://tc39.es/ecma262/
-[Service Worker]:(https://developers.google.com/web/fundamentals/primers/service-workers)
-[Simple-Storage]:(https://github.com/enbock/Simple-Storage)
+[Service Worker]:https://developers.google.com/web/fundamentals/primers/service-workers
+[Simple-Storage]:https://github.com/enbock/Simple-Storage
