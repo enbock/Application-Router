@@ -1,7 +1,7 @@
 {
   "name": "@enbock/application-router",
   "description": "A simple application router for Progressive Web Applications.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/enbock/Application-Router/",
   "license": "MIT",
   "author": "Endre Bock <dev@itbock.de>",
