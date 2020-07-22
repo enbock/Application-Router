@@ -1,16 +1,16 @@
-import {IObserver} from '@enbock/state-value-observer/Observer';
+import {Observer} from '@enbock/state-value-observer/ValueObserver';
 
-export interface IPageData {
+export interface PageData {
   name: string,
   baseUrl: string
   currentUrl: string
 }
 
 export default class Router {
-  currentPage: IObserver<IPageData | null>;
+  currentPage: Observer<PageData | null>;
   history: History;
 
-  constructor(pageObserver: IObserver<IPageData | null>, history: History) {
+  constructor(pageObserver: Observer<PageData | null>, history: History) {
     this.currentPage = pageObserver;
     this.history = history;
   }
@@ -21,13 +21,13 @@ export default class Router {
 
   initialize(): void {
     if (this.currentPage.value == null) return;
-    const firstPage: IPageData = this.currentPage.value;
+    const firstPage: PageData = this.currentPage.value;
     this.history.replaceState(firstPage, firstPage.name, firstPage.baseUrl);
     this.updatePage(firstPage);
   }
 
-  changePage(newPage: IPageData): void {
-    const currentPage: IPageData | null = this.currentPage.value;
+  changePage(newPage: PageData): void {
+    const currentPage: PageData | null = this.currentPage.value;
     if (currentPage != null && currentPage.name == newPage.name) {
       return;
     }
@@ -36,12 +36,12 @@ export default class Router {
     this.updatePage(newPage);
   }
 
-  protected updatePage(page: IPageData): void {
+  protected updatePage(page: PageData): void {
     this.currentPage.value = page;
   }
 
   protected onHistoryChange(event: PopStateEvent): void {
-    const newPage: IPageData = event.state as IPageData;
+    const newPage: PageData = event.state as PageData;
     this.updatePage(newPage);
   }
 }

@@ -847,10 +847,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@enbock/state-value-observer@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@enbock/state-value-observer/-/state-value-observer-1.1.4.tgz#8e875f0f3b5f1657ccbb8f84300e78307879a268"
-  integrity sha512-7yAG1nDTIDbjxLvOnuMVnk2iFnQ7y+5YOshZqZVSz1x5UQjB54/ASPPmI4fyU7QG8A7iArJ1vu9ilQI1p16Dbg==
+"@enbock/state-value-observer@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@enbock/state-value-observer/-/state-value-observer-2.0.0.tgz#e91ecd256e025b7c5e7e443af12e0ac9a30e29de"
+  integrity sha512-7YmRPhBrt8itiJ6CG/vpHa8RaYjAF6kbxvWiWVUUCWJIbmdapgDPzuFA0dv0VMSf6uvfpBnAQbsVKWPeUTuUeA==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"

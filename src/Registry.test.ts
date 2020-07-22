@@ -1,13 +1,13 @@
 import ListenerAdapter from '@enbock/state-value-observer/ListenerAdapter';
-import {IObserver, IOnChangeCallback} from '@enbock/state-value-observer/Observer';
+import {Observer, OnChangeCallback} from '@enbock/state-value-observer/ValueObserver';
 import Registry from './Registry';
-import {IPageData} from './Router';
+import {PageData} from './Router';
 
 describe(Registry, () => {
-  let observer: IObserver<IPageData | null>, adapter: ListenerAdapter<IPageData | null>;
+  let observer: Observer<PageData | null>, adapter: ListenerAdapter<PageData | null>;
 
   beforeEach(() => {
-    adapter = jest.genMockFromModule<ListenerAdapter<IPageData | null>>('@enbock/state-value-observer/ListenerAdapter');
+    adapter = jest.genMockFromModule<ListenerAdapter<PageData | null>>('@enbock/state-value-observer/ListenerAdapter');
     adapter.addListener = jest.fn();
     observer = {
       value: {
@@ -19,7 +19,7 @@ describe(Registry, () => {
   });
 
   it('Change url of page at register', () => {
-    const page: IPageData = {
+    const page: PageData = {
       name: 'page',
       baseUrl: './page/',
       currentUrl: './page/'
@@ -40,7 +40,7 @@ describe(Registry, () => {
   });
 
   it('Change url of page at register without current page', () => {
-    const page: IPageData = {
+    const page: PageData = {
       name: 'page',
       baseUrl: './page/',
       currentUrl: './page/'
@@ -57,16 +57,16 @@ describe(Registry, () => {
   });
 
   it('Ignores null page update', () => {
-    const page: IPageData = {
+    const page: PageData = {
       name: 'page',
       baseUrl: './page/',
       currentUrl: './page/'
     };
     observer.value = page;
 
-    let callback: IOnChangeCallback<IPageData | null> = jest.fn();
+    let callback: OnChangeCallback<PageData | null> = jest.fn();
     (adapter.addListener as jest.Mock)
-      .mockImplementation((handler: IOnChangeCallback<IPageData | null>) => callback = handler);
+      .mockImplementation((handler: OnChangeCallback<PageData | null>) => callback = handler);
 
     const registry: Registry = new Registry(observer);
     registry.attachAdapter(adapter);
@@ -79,16 +79,16 @@ describe(Registry, () => {
   });
 
   it('Update pages', () => {
-    let callback: IOnChangeCallback<IPageData | null> = jest.fn();
+    let callback: OnChangeCallback<PageData | null> = jest.fn();
     const listenerSpy: jest.Mock = adapter.addListener as jest.Mock;
-    listenerSpy.mockImplementation((handler: IOnChangeCallback<IPageData | null>) => callback = handler);
+    listenerSpy.mockImplementation((handler: OnChangeCallback<PageData | null>) => callback = handler);
 
-    const page: IPageData = {
+    const page: PageData = {
       name: 'page',
       baseUrl: './page/',
       currentUrl: './page/'
     };
-    const newPage: IPageData = {
+    const newPage: PageData = {
       name: 'newPage',
       baseUrl: './new/page.html',
       currentUrl: './new/page.html'
