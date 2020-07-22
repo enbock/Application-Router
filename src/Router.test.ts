@@ -1,8 +1,8 @@
-import {IObserver} from '@enbock/state-value-observer/Observer';
-import Router, {IPageData} from './Router';
+import {Observer} from '@enbock/state-value-observer/ValueObserver';
+import Router, {PageData} from './Router';
 
 describe(Router, () => {
-  let window: Window, history: History, pageObserver: IObserver<IPageData | null>;
+  let window: Window, history: History, pageObserver: Observer<PageData | null>;
 
   beforeEach(() => {
     // @ts-ignore
@@ -43,7 +43,7 @@ describe(Router, () => {
 
     const router: Router = new Router(pageObserver, history);
     router.attachTo(window);
-    const oldPage: IPageData = {
+    const oldPage: PageData = {
       name: 'before',
       baseUrl: './before/page.html',
       currentUrl: './before/page.html'
@@ -55,7 +55,7 @@ describe(Router, () => {
 
   it('Initialize first page', () => {
     const router: Router = new Router(pageObserver, history);
-    const firstPage: IPageData = {
+    const firstPage: PageData = {
       name: 'first',
       baseUrl: './new/page.html',
       currentUrl: '../new/page.html'
@@ -68,7 +68,7 @@ describe(Router, () => {
 
   it('Initialize without pages', () => {
     const router: Router = new Router(pageObserver, history);
-    const firstPage: IPageData = {
+    const firstPage: PageData = {
       name: 'first',
       baseUrl: './new/page.html',
       currentUrl: '../new/page.html'
@@ -81,7 +81,7 @@ describe(Router, () => {
 
   it('Change to a new page', () => {
     const router: Router = new Router(pageObserver, history);
-    const newPage: IPageData = {
+    const newPage: PageData = {
       name: 'new',
       baseUrl: './new/page.html',
       currentUrl: './new/page.html'

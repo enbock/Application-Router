@@ -1,43 +1,43 @@
 import ListenerAdapter from '@enbock/state-value-observer/ListenerAdapter';
-import {IObserver} from '@enbock/state-value-observer/Observer';
-import {IPageData} from './Router';
+import {Observer} from '@enbock/state-value-observer/ValueObserver';
+import {PageData} from './Router';
 
-export interface IPageDictionary<T> {
-  [index: string]: T
+export interface PageDictionary<Type> {
+  [index: string]: Type
 }
 
 export default class Registry {
-  dictionary: IPageDictionary<IPageData>;
-  observer: IObserver<IPageData | null>;
+  dictionary: PageDictionary<PageData>;
+  observer: Observer<PageData | null>;
 
-  constructor(observer: IObserver<IPageData | null>) {
+  constructor(observer: Observer<PageData | null>) {
     this.observer = observer;
     this.dictionary = {};
   }
 
-  attachAdapter(adapter: ListenerAdapter<IPageData | null>): void {
+  attachAdapter(adapter: ListenerAdapter<PageData | null>): void {
     adapter.addListener(this.updatePageData.bind(this));
   }
 
-  getPages(): IPageData[] {
-    const pages: IPageData[] = [];
+  getPages(): PageData[] {
+    const pages: PageData[] = [];
 
     Object.keys(this.dictionary).forEach((pageName: string) => {
-      const page: IPageData = this.dictionary[pageName];
+      const page: PageData = this.dictionary[pageName];
       pages.push(page);
     });
 
     return pages;
   }
 
-  registerPage(page: IPageData) {
+  registerPage(page: PageData) {
     if (this.observer.value != null) {
       this.updatePageUrlByDepth(this.observer.value, page);
     }
     this.dictionary[page.name] = page;
   }
 
-  protected updatePageData(newValue: IPageData | null): void {
+  protected updatePageData(newValue: PageData | null): void {
     if (newValue == null) return;
     Object.keys(this.dictionary).forEach(
       (pageName: string) => {
@@ -46,7 +46,7 @@ export default class Registry {
     );
   }
 
-  protected updatePageUrlByDepth(currentPage:IPageData, registeredPage: IPageData): void {
+  protected updatePageUrlByDepth(currentPage:PageData, registeredPage: PageData): void {
     let relativeBack: string = '', index: number = 0, newUrl: string;
 
     if (registeredPage == currentPage) {

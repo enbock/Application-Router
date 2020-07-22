@@ -1,7 +1,7 @@
 {
   "name": "@enbock/application-router",
   "description": "A simple application router for Progressive Web Applications.",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "homepage": "https://github.com/enbock/Application-Router/",
   "license": "MIT",
   "author": "Endre Bock <dev@itbock.de>",
@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@enbock/state-value-observer": "^1.1.4"
+    "@enbock/state-value-observer": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
